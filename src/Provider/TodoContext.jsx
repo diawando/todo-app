@@ -4,7 +4,7 @@ import React, { createContext, useState, useContext } from 'react';
 const TodoContext = createContext();
 
 export const TodoProvider = ({ children }) => {
-      const [todos, setTodos] = React.useState([]);
+      const [todos, setTodos] = useState([]);
 
       // Récuperer les todos depuis localStorage au montage
       React.useEffect(() => {
@@ -68,4 +68,4 @@ export const TodoProvider = ({ children }) => {
       );
 };
 
-export const useTodoContext = () => React.useContext(TodoContext);
+export const useTodoContext = () => useContext(TodoContext);
