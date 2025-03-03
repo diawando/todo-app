@@ -1,22 +1,17 @@
 "use client";
+import React from "react";
+import { useTodoContext } from "@/Provider/TodoContext";
+
 
 function Form( {setTodos, todos }){
-     const handleSubmit = (event) =>{
+    const { addTodo } = useTodoContext();
+    
+    const handleSubmit = (event) => {
          event.preventDefault();
          const value = event.target.todo.value;
-         const newTodo = {
-             title: value,
-             id: self.crypto.randomUUId,
-             is_completed:false,
-         };
-
-         setTodos((prevTodos) => [...prevTodos,newTodo]);
-         // Store updated todo lis in local storage
-         const updatedTodoList = JSON.stringify([...todos, newTodo]);
-         localStorage.setItem("todos", updatedTodoList);
-         // reset the form
+         addTodo(value); // Utilise la fonction addTodo du contexte
          event.target.reset();
-     };
+    }
 
      return (
         <form className="form" onSubmit={handleSubmit} >
