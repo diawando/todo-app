@@ -9,6 +9,15 @@ import TODOList from "@/components/TODOList";
 export default function Home() {
   const [todos, setTodos] = React.useState([]);
   
+
+  // Retrieve data from localStorage when components mounts
+  React.useEffect(() => {
+     const storedTodos = localStorage.getItem("todos");
+     if (storedTodos) {
+        setTodos(JSON.parse(storedTodos));
+     }
+  }, []);
+  
   const todos_completed = todos.filter(
     (todo) => todo.is_completed ==true
   ).length;
@@ -17,7 +26,7 @@ export default function Home() {
     <div className="wrapper">
          <Header />
          <TODOHero todos_completed={todos_completed} total_todos={total_todos} />
-         <Form setTodos={setTodos} />
+         <Form todos={todos} setTodos={setTodos} />
          <TODOList todos={todos}  setTodos={setTodos} />
     </div>
   );
