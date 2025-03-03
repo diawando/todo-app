@@ -1,7 +1,9 @@
 import React from "react";
 import Item from "./Item";
+import { useTodoContext } from "@/Provider/TodoContext";
 
-function TODOList({todos, setTodos }){
+function TODOList(){
+     const { todos, setTodos } = useTodoContext();
      return (
      <ol className="todo_list">
         {todos && todos.length > 0 ? (

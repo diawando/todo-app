@@ -1,7 +1,7 @@
 import React from "react";
 import { useTodoContext } from "@/Provider/TodoContext";
 
-function TODOHero({todos_completed, total_todos}){
+function TODOHero(){
     const { todos } = useTodoContext();
     const todos_completed = todos.filter((todo) => todo.is_completed).length;
     const total_todos = todos.length 
